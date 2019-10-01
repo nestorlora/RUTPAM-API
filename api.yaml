@@ -50,7 +50,7 @@ paths:
                     description: Show if the server may contain inaccurate information due to maintenance works
                     example: false
       tags:
-        - Information
+        - Server
   /stations:
     get:
       summary: Get stations
@@ -73,7 +73,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Station'
       tags:
-        - DB
+        - Stations
   /pickup_dropoff_types:
     summary: Defined pick-up and drop-off operations in stops
     get:
@@ -97,7 +97,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/PickupDropoffType'
       tags:
-        - DB
+        - Stops
     post:
       summary: Get types
       description: Returns the complete table or single element
@@ -124,8 +124,7 @@ paths:
         '401':
           $ref: '#/components/responses/401Unauthorized'
       tags:
-        - DB
-  
+        - Stops
 components:
   schemas:
     Station:
@@ -732,7 +731,13 @@ components:
           schema:
             $ref: '#/components/schemas/ApiResponse'
 tags:
-  - name: Informacion
-    description: Información general de la instancia
-  - name: DB
-    description: Operaciones básicas sobre la BBDD
+  - name: Server
+    description: Server status and authentication
+  - name: Stations
+  - name: Routes
+  - name: Agencies
+  - name: Towns
+  - name: Networks
+  - name: Zones
+  - name: Transfers
+  - name: Paths & points
