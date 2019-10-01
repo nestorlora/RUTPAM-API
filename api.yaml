@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2.0
+  version: 0.2.0-alpha
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -45,6 +45,29 @@ paths:
                     example: false
       tags:
         - Information
+  /stations:
+    get:
+      summary: Get stations
+      description: Returns a list of stations
+      parameters:
+        - in: query
+          name: id
+          description: Station ID
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Station'
+      tags:
+        - DB
   /pickup_dropoff_types:
     summary: Defined pick-up and drop-off operations in stops
     get:
@@ -96,6 +119,7 @@ paths:
           $ref: '#/components/responses/401Unauthorized'
       tags:
         - DB
+  
 components:
   schemas:
     Station:
@@ -567,7 +591,7 @@ components:
         id:
           type: integer
           format: int32
-          description: 
+          description: Route type ID
           example: 101
         description:
           type: string
