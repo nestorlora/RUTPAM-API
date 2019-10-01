@@ -15,7 +15,7 @@ servers:
     description: Development local HTTP Server
 # Method legend:
 # GET - Get data (not modified)
-# POST - 
+# POST - Create resource if not exists
 # PUT - Create resource
 # DELETE - Delete/Disable/Expire resource
 # PATCH - Edit resource
