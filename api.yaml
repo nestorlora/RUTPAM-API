@@ -51,6 +51,7 @@ paths:
                     example: false
       tags:
         - Server
+#  /auth - TODO
   /stations:
     get:
       summary: Get all stations
