@@ -882,10 +882,10 @@ components:
         code:
           type: number
           format: int32
-          example: 404
+          example: 200
         status:
           type: string
-          example: 'User not found'
+          example: "OK"
   securitySchemes:
     User:
       type: apiKey
