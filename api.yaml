@@ -55,7 +55,7 @@ paths:
   /stations:
     get:
       summary: Get all stations
-      description: Returns al the stations in the database
+      description: Returns all the stations in the database
       responses:
         '200':
           description: OK
