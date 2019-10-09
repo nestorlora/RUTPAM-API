@@ -128,16 +128,9 @@ paths:
                           $ref: '#/components/schemas/Station'
       tags:
         - Stations
-  /pickup_dropoff_types:
-    summary: Defined pick-up and drop-off operations in stops
     get:
-      summary: Get types
-      description: Returns the complete table or single element
       parameters:
-        - in: query
           name: id
-          description: Type ID
-          required: false
           schema:
             type: integer
             format: int32
@@ -152,20 +145,11 @@ paths:
                   $ref: '#/components/schemas/PickupDropoffType'
       tags:
         - Stops
-    post:
-      summary: Get types
-      description: Returns the complete table or single element
       security:
         - Agent: []
         - Admin: []
       parameters:
-        - in: query
-          name: id
-          description: Type ID
-          required: false
           schema:
-            type: integer
-            format: int32
       responses:
         '200':
           description: OK
