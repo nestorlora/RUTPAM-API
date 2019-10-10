@@ -150,7 +150,7 @@ paths:
         - Routes
   /routes/{id}:
     get:
-      summary: Find station by ID
+      summary: Find route by ID
       description: Return a single route
       parameters:
         - in: path
