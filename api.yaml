@@ -340,6 +340,26 @@ paths:
           $ref: '#/components/responses/401Unauthorized'
       tags:
         - Stops
+  /transfers:
+    get:
+      summary: Get all transfers
+      description: Returns all the defined transfers in the database
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      transfers:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Transfer'
+      tags:
+        - Transfers
 components:
   schemas:
     Station:
