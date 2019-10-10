@@ -948,11 +948,14 @@ components:
 tags:
   - name: Server
     description: Server status and authentication
-  - name: Stations
   - name: Routes
+  - name: Subroutes
+  - name: Stops
+  - name: Stations
+  - name: Transfers
+  - name: Paths
+  - name: Points
   - name: Agencies
-  - name: Towns
   - name: Networks
   - name: Zones
-  - name: Transfers
-  - name: Paths & points
+  - name: Towns
