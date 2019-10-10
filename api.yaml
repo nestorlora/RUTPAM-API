@@ -176,6 +176,26 @@ paths:
                           $ref: '#/components/schemas/Route'
       tags:
         - Routes
+  /routes/type:
+    get:
+      summary: Get all route types
+      description: Returns all the route types in the database
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      routeTypes:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RouteType'
+      tags:
+        - Routes
   /agencies:
     get:
       summary: Get all agencies
