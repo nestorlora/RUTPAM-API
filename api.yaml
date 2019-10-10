@@ -196,6 +196,54 @@ paths:
                           $ref: '#/components/schemas/RouteType'
       tags:
         - Routes
+  /subroutes:
+    get:
+      summary: Get all subroutes
+      description: Returns all the active subroutes in the database
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      routes:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Subroute'
+      tags:
+        - Subroutes
+  /subroutes/findByRoute:
+    get:
+      summary: Find subroutes by route ID
+      description: Return multiple subroutes under a parent route
+      parameters:
+        - in: path
+          name: routeId
+          description: Parent route ID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      routes:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Subroute'
+      tags:
+        - Subroutes
   /agencies:
     get:
       summary: Get all agencies
