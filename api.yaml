@@ -292,6 +292,54 @@ paths:
                           $ref: '#/components/schemas/Agency'
       tags:
         - Agencies
+  /networks:
+    get:
+      summary: Get all networks
+      description: Returns all the networks in the database
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      networks:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Network'
+      tags:
+        - Networks
+  /networks/{id}:
+    get:
+      summary: Find network by ID
+      description: Return a single network
+      parameters:
+        - in: path
+          name: id
+          description: Network ID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      networks:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Network'
+      tags:
+        - Networks
   /stops:
     get:
       summary: Get all stops
