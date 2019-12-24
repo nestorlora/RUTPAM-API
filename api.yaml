@@ -482,10 +482,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Station ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Station ID
         eid:
           type: string
           description: External ID (defined by the provider)
@@ -504,20 +503,17 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Relation ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Relation ID
         agency:
-          type: integer
-          format: int64
-          description: Agency ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
         type:
-          type: integer
-          format: int64
-          description: Info type ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Info type ID
         information:
           type: string
           description: Actual piece of information
@@ -530,24 +526,21 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Subroute ID
-          example: 1654135
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Subroute ID
         route:
-          type: integer
-          format: int64
-          description: Parent route ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Parent route ID
         eid:
           type: string
           description: External ID (defined by the provider)
           example: '41.5'
         type:
-          type: integer
-          format: int64
-          description: Subroute type ID (Going route/Return route/Circular route/Positioning move)
-          example: 1
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Subroute type ID (Going route/Return route/Circular route/Positioning move)
         headsign:
           type: string
           description: Headsign indication text
@@ -564,15 +557,13 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Route ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Route ID
         network:
-          type: integer
-          format: int32
-          description: Network ID
-          example: 2
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
         eid:
           type: string
           description: External ID (defined by the provider)
@@ -625,10 +616,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Town ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Town ID
         name:
           type: string
           description: Town name
@@ -637,27 +627,24 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Town area ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Town area ID
         name:
           type: string
           description: Area name
           example: Airport
         town:
-          type: integer
-          format: int64
-          description: Parent Town ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Parent Town ID
     Agency:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Agency ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
         name:
           type: string
           description: Agency name
@@ -666,25 +653,21 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Relation ID
-          example: 5
+         allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Relation ID
         route:
-          type: integer
-          format: int64
+          allOf:
+          - $ref: '#/components/schemas/objectId'
           description: Route ID
-          example: 134846
         agency:
-          type: integer
-          format: int32
-          description: Agency ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
         role:
-          type: integer
-          format: int32
-          description: Agency role ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency role ID
         startDate:
           $ref: '#/components/schemas/startDate'
         endDate:
@@ -693,10 +676,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Stop ID
-          example: 5423
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Stop ID
         eid:
           type: string
           description: External ID (defined by the provider)
@@ -706,15 +688,13 @@ components:
           description: Stop name. Usually describes the location around the stop.
           example: Alameda Principal - Sur
         townArea:
-          type: integer
-          format: int32
-          description: Town area ID
-          example: 175
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Town area ID
         station:
-          type: integer
-          format: int64
-          description: Parent station ID (if exists)
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Parent station ID (if exists)
         platform:
           type: string
           description: >
@@ -723,15 +703,13 @@ components:
             or "track" should not be included.
           example: 4B
         network:
-          type: integer
-          format: int64
-          description: Network ID
-          example: 7
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
         zone:
-          type: integer
-          format: int32
-          description: Zone ID
-          example: 3
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Zone ID
         address:
           type: string
           description: Station address (if it has one)
@@ -746,30 +724,25 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Relation ID
-          example: 5654
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Relation ID
         subroute:
-          type: integer
-          format: int64
-          description: Subroute ID
-          example: 1654135
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Subroute ID
         stop:
-          type: integer
-          format: int32
-          description: Stop ID
-          example: 5423
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Stop ID
         pickupType:
-          type: integer
-          format: int32
-          description: Pickup or Drop off type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pickup or Drop off type ID
         dropoffType:
-          type: integer
-          format: int32
-          description: Pickup or Drop off type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pickup or Drop off type ID
         sequence:
           type: integer
           format: int32
@@ -779,30 +752,26 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Point ID
-          example: 3243541
+         allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Point ID
         location:
           $ref: '#/components/schemas/LatLong'
     PathPoint:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Relation ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Relation ID
         path:
-          type: integer
-          format: int32
-          description: Path ID
-          example: 3243
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Path ID
         point:
-          type: integer
-          format: int64
-          description: Point ID
-          example: 3243541
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Point ID
         sequence:
           type: integer
           format: int32
@@ -812,25 +781,21 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Point of sale ID
-          example: 3243541
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Point of sale ID
         agency:
-          type: integer
-          format: int32
-          description: Agency ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
         townArea:
-          type: integer
-          format: int64
-          description: Town area ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Town area ID
         type:
-          type: integer
-          format: int32
-          description: Pos type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pos type ID
         address:
           type: string
           description: Station address (if it has one)
@@ -841,10 +806,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Network ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
         shortName:
           type: string
           description: Contracted name or acronym used for the network
@@ -857,10 +821,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Agency role ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency role ID
         role:
           type: string
           description: Name
@@ -873,10 +836,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Info type ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Info type ID
         type:
           type: string
           description: Type name
@@ -885,10 +847,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Subroute type ID
-          example: 134846
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Subroute type ID
         type:
           type: string
           description: Type name
@@ -901,10 +862,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Point of sale type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Point of sale type ID
         type:
           type: string
           description: Type name
@@ -913,10 +873,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Pickup or Drop off type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pickup or Drop off type ID
         type:
           type: string
           description: Pickup or Drop off method
@@ -929,10 +888,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Transfer type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Transfer type ID
         type:
           type: string
           description: Type name
@@ -945,10 +903,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Route type ID
-          example: 101
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Route type ID
         description:
           type: string
           description: Type name
@@ -964,25 +921,21 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
-          description: Transfer ID
-          example: 3234854
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Transfer ID
         stop1:
-          type: integer
-          format: int32
-          description: Stop ID where tranfer begins
-          example: 5423
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Stop ID where tranfer begins
         stop2:
-          type: integer
-          format: int32
-          description: Stop ID where tranfer ends
-          example: 5423
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Stop ID where tranfer ends
         type:
-          type: integer
-          format: int32
-          description: Tranfer type ID
-          example: 56
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Tranfer type ID
         minimunTime:
           type: integer
           format: int32
@@ -991,10 +944,9 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Path ID
-          example: 5423
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Path ID
         color:
           type: string
           description: Path color (RGB)
@@ -1008,15 +960,13 @@ components:
       type: object
       properties:
         id:
-          type: integer
-          format: int32
-          description: Zone ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Zone ID
         network:
-          type: integer
-          format: int32
-          description: Network ID
-          example: 5
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
         name:
           type: string
           description: Zone name
@@ -1037,6 +987,11 @@ components:
       required:
         - lat
         - lon
+    objectId:
+      type: string
+      minLength: 24
+      maxLength: 24
+      example: '5ded41d17f28ec03b9787b21'
     startDate:
       type: string
       format: date-time
