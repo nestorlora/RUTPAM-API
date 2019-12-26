@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_6
+  version: 0.2-dev_7
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -313,7 +313,39 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Network'
-
+    put:
+      tags:
+        - Networks
+      summary: Add new network
+      description: Save new network in database
+      parameters: []
+      requestBody:
+        description: Network object that needs to be added to database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Network'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiResponse'
+                  - type: object
+                    properties:
+                      networks:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Network'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
   /networks/find:
     get:
       tags:
