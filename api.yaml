@@ -1121,15 +1121,15 @@ components:
   securitySchemes:
     User:
       type: apiKey
-      in: query
+      in: header
       name: userKey
     Agent:
       type: apiKey
-      in: query
+      in: header
       name: agentKey
     Admin:
       type: apiKey
-      in: query
+      in: header
       name: opKey
   responses:
     401Unauthorized:
