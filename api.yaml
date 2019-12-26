@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-alpha_4
+  version: 0.2-alpha_5
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -23,11 +23,13 @@ paths:
   /info:
     summary: Server information
     get:
+      tags:
+        - Server
       summary: Getting the server status
       description: Returns server information
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -49,16 +51,16 @@ paths:
                     type: boolean
                     description: Show if the server may contain inaccurate information due to maintenance works
                     example: false
-      tags:
-        - Server
 #  /auth - TODO
   /stations:
     get:
+      tags:
+        - Stations
       summary: Get all stations
       description: Returns all the stations in the database
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -70,10 +72,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Station'
-      tags:
-        - Stations
   /stations/{id}:
     get:
+      tags:
+        - Stations
       summary: Find station by ID
       description: Return a single station
       parameters:
@@ -98,10 +100,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Station'
-      tags:
-        - Stations
   /stations/findByName:
     get:
+      tags:
+        - Stations
       summary: Find station by name
       description: Returns a list of stations that contains the provided name
       parameters:
@@ -126,10 +128,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Station'
-      tags:
-        - Stations
   /routes:
     get:
+      tags:
+        - Routes
       summary: Get all routes
       description: Returns all the routes in the database
       responses:
@@ -146,10 +148,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Route'
-      tags:
-        - Routes
   /routes/{id}:
     get:
+      tags:
+        - Routes
       summary: Find route by ID
       description: Return a single route
       parameters:
@@ -174,10 +176,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Route'
-      tags:
-        - Routes
   /routes/type:
     get:
+      tags:
+        - Routes
       summary: Get all route types
       description: Returns all the route types in the database
       responses:
@@ -194,10 +196,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/RouteType'
-      tags:
-        - Routes
   /subroutes:
     get:
+      tags:
+        - Subroutes
       summary: Get all subroutes
       description: Returns all the active subroutes in the database
       responses:
@@ -214,10 +216,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Subroute'
-      tags:
-        - Subroutes
   /subroutes/findByRoute:
     get:
+      tags:
+        - Subroutes
       summary: Find subroutes by route ID
       description: Return multiple subroutes under a parent route
       parameters:
@@ -242,10 +244,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Subroute'
-      tags:
-        - Subroutes
   /agencies:
     get:
+      tags:
+        - Agencies
       summary: Get all agencies
       description: Returns all the agencies in the database
       responses:
@@ -262,10 +264,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Agency'
-      tags:
-        - Agencies
   /agencies/{id}:
     get:
+      tags:
+        - Agencies
       summary: Find agency by ID
       description: Return a single agency
       parameters:
@@ -290,15 +292,16 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Agency'
-      tags:
-        - Agencies
   /networks:
     get:
+      tags:
+        - Networks
       summary: Get all networks
       description: Returns all the networks in the database
+      parameters: []
       responses:
         '200':
-          description: OK
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -310,10 +313,11 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Network'
-      tags:
-        - Networks
+
   /networks/find:
     get:
+      tags:
+        - Networks
       summary: Search networks
       description: Returns all the networks matching the parameters
       parameters:
@@ -343,12 +347,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-      tags:
-        - Networks
-  
   /networks/{id}:
     get:
-      summary: Find network by ID
+      tags:
+        - Networks
+      summary: Get a single network
       description: Return a single network
       parameters:
         - in: path
@@ -372,10 +375,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Network'
-      tags:
-        - Networks
   /stops:
     get:
+      tags:
+        - Stops
       summary: Get all stops
       description: Returns al the stops in the database
       responses:
@@ -392,10 +395,10 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Stop'
-      tags:
-        - Stops
   /stops/{id}:
     get:
+      tags:
+        - Stops
       summary: Find stop by ID
       description: Return a single stop
       parameters:
@@ -420,11 +423,11 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Station'
-      tags:
-        - Stops
   /pickup_dropoff_types:
     summary: Defined pick-up and drop-off operations in stops
     get:
+      tags:
+        - Stops
       summary: Get all pickup or dropoff types
       description: Returns all the pickup/dropoff types in the database
       responses:
@@ -436,9 +439,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PickupDropoffType'
+    put:
       tags:
         - Stops
-    put:
       summary: Create type
       description: Create a new pickup/dropoff type in the database
       security:
@@ -462,9 +465,9 @@ paths:
                   $ref: '#/components/schemas/PickupDropoffType'
         '401':
           $ref: '#/components/responses/401Unauthorized'
+    patch:
       tags:
         - Stops
-    patch:
       summary: Edit type
       description: Edit actual pickup/dropoff type in the database
       security:
@@ -488,10 +491,10 @@ paths:
                   $ref: '#/components/schemas/PickupDropoffType'
         '401':
           $ref: '#/components/responses/401Unauthorized'
-      tags:
-        - Stops
   /transfers:
     get:
+      tags:
+        - Transfers
       summary: Get all transfers
       description: Returns all the defined transfers in the database
       responses:
@@ -508,8 +511,6 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Transfer'
-      tags:
-        - Transfers
 components:
   schemas:
     Station:
@@ -1073,6 +1074,8 @@ components:
 tags:
   - name: Server
     description: Server status and authentication
+  - name: Networks
+    description: Transit networks
   - name: Routes
   - name: Subroutes
   - name: Stops
@@ -1081,6 +1084,5 @@ tags:
   - name: Paths
   - name: Points
   - name: Agencies
-  - name: Networks
   - name: Zones
   - name: Towns
