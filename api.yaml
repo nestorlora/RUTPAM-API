@@ -1140,6 +1140,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiResponse'
+    429TooManyRequests:
+      description: The user has sent too many requests in a given amount of time
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+          description: Seconds to wait before making a new request
+          example: 60
       content:
         application/json:
           schema:
