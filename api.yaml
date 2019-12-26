@@ -27,6 +27,7 @@ paths:
         - Server
       summary: Getting the server status
       description: Returns server information
+      security: []
       responses:
         200:
           description: Successful operation
