@@ -1133,7 +1133,13 @@ components:
       name: opKey
   responses:
     401Unauthorized:
-      description: Unauthorized (Token key is not provided, is invalid, or is expired)
+      description: Unauthorized (insufficient permissions or token key is expired)
+    403Forbidden:
+      description: Forbidden access (token key is not provided)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponse'
       content:
         application/json:
           schema:
