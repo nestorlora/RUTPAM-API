@@ -1138,6 +1138,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiResponse'
+security:
+  - User: []
+  - Agent: []
+  - Admin: []
 tags:
   - name: Server
     description: Server status and authentication
