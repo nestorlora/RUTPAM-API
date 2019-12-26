@@ -28,7 +28,7 @@ paths:
       summary: Getting the server status
       description: Returns server information
       responses:
-        '200':
+        200:
           description: Successful operation
           content:
             application/json:
