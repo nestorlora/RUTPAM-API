@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_8
+  version: 0.2-dev_9
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -85,8 +85,7 @@ paths:
           description: Station ID
           required: true
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/objectId'
       responses:
         '200':
           description: OK
@@ -161,8 +160,7 @@ paths:
           description: Station ID
           required: true
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/objectId'
       responses:
         '200':
           description: OK
@@ -277,8 +275,7 @@ paths:
           description: Agency ID
           required: true
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/objectId'
       responses:
         '200':
           description: OK
@@ -427,8 +424,7 @@ paths:
           description: Network ID
           required: true
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/objectId'
       responses:
         '200':
           description: OK
