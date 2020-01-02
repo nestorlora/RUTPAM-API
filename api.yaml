@@ -589,14 +589,14 @@ components:
             Do not simply duplicate the name of the route.
           example: >
             "A" trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional "A" trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway).
-        observations:
-          type: string
-          description: Aditional comments, informal data.
-          example: Traslado de paradas por obras en Alameda Ppal
         startDate:
           $ref: '#/components/schemas/startDate'
         endDate:
           $ref: '#/components/schemas/endDate'
+        observations:
+          type: string
+          description: Aditional comments, informal data.
+          example: Traslado de paradas por obras en Alameda Ppal
         color:
           type: string
           description: Route color designation that matches public facing material
