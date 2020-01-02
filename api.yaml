@@ -542,6 +542,21 @@ paths:
                           $ref: '#/components/schemas/Transfer'
 components:
   schemas:
+    Network:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
+        shortName:
+          type: string
+          description: Contracted name or acronym used for the network
+          example: "CTMAM"
+        longName:
+          type: string
+          description: Extended or full-version name of the networkd
+          example: "Consorcio de Transportes Metropolitanos del Área de Málaga"
     Station:
       type: object
       properties:
@@ -866,21 +881,6 @@ components:
           example: Paseo del Parque 21
         location:
           $ref: '#/components/schemas/LatLong'
-    Network:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Network ID
-        shortName:
-          type: string
-          description: Contracted name or acronym used for the network
-          example: "CTMAM"
-        longName:
-          type: string
-          description: Extended or full-version name of the networkd
-          example: "Consorcio de Transportes Metropolitanos del Área de Málaga"
     AgencyRole:
       type: object
       properties:
