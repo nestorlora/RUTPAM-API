@@ -62,18 +62,7 @@ paths:
       parameters: []
       responses:
         200:
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ApiResponse'
-                  - type: object
-                    properties:
-                      networks:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Network'
+          $ref: '#/components/responses/200Networks'
     put:
       tags:
         - Networks
@@ -89,18 +78,7 @@ paths:
               $ref: '#/components/schemas/Network'
       responses:
         200:
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ApiResponse'
-                  - type: object
-                    properties:
-                      networks:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Network'
+          $ref: '#/components/responses/200Networks'
         400:
           $ref: '#/components/responses/400BadRequest'
     patch:
@@ -120,18 +98,7 @@ paths:
               $ref: '#/components/schemas/Network'
       responses:
         200:
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ApiResponse'
-                  - type: object
-                    properties:
-                      networks:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Network'
+          $ref: '#/components/responses/200Networks'
         400:
           $ref: '#/components/responses/400BadRequest'
   /networks/{id}:
@@ -149,18 +116,7 @@ paths:
             $ref: '#/components/schemas/objectId'
       responses:
         200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ApiResponse'
-                  - type: object
-                    properties:
-                      networks:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Network'
+          $ref: '#/components/responses/200Networks'
         400:
           $ref: '#/components/responses/400BadRequest'
     delete:
@@ -179,11 +135,7 @@ paths:
             $ref: '#/components/schemas/objectId'
       responses:
         200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/ApiResponse'
+          $ref: '#/components/responses/200Generic'
         400:
           $ref: '#/components/responses/400BadRequest'
   /networks/find:
@@ -1142,6 +1094,27 @@ components:
       in: header
       name: opKey
   responses:
+    # COMMON SUCCESS
+    200Generic:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponse'
+    200Networks:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ApiResponse'
+              - type: object
+                properties:
+                  networks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Network'
+    # COMMON ERRORS
     400BadRequest:
       description: Invalid input
       content:
