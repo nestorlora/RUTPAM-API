@@ -642,6 +642,37 @@ components:
           type: string
           description: Type explanation or example
           example: 'TGV (FR), ICE (DE), Eurostar (GB)'
+    Subroute:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Subroute ID
+        route:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Parent route ID
+        eid:
+          type: string
+          description: External ID (defined by the provider)
+          example: '41.5'
+        type:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Subroute type ID (Going route/Return route/Circular route/Positioning move)
+        headsign:
+          type: string
+          description: Headsign indication text
+          example: El Palo
+        description:
+          type: string
+          description: Subroute description
+          example: Ida. Itinerario 1
+        startDate:
+          $ref: '#/components/schemas/startDate'
+        endDate:
+          $ref: '#/components/schemas/endDate'
     LineAgency:
       type: object
       properties:
@@ -697,37 +728,6 @@ components:
           type: string
           description: Complement to the previous information
           example: Reservas
-    Subroute:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Subroute ID
-        route:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Parent route ID
-        eid:
-          type: string
-          description: External ID (defined by the provider)
-          example: '41.5'
-        type:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Subroute type ID (Going route/Return route/Circular route/Positioning move)
-        headsign:
-          type: string
-          description: Headsign indication text
-          example: El Palo
-        description:
-          type: string
-          description: Subroute description
-          example: Ida. Itinerario 1
-        startDate:
-          $ref: '#/components/schemas/startDate'
-        endDate:
-          $ref: '#/components/schemas/endDate'
     Town:
       type: object
       properties:
