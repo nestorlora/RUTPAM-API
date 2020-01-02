@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_11
+  version: 0.2-dev_12
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -578,6 +578,10 @@ components:
           description: >
             Full name of a route. This name is generally more descriptive than the shortName and often includes the route's destination or stop.
           example: Puerta Blanca - Alameda Principal - El Palo
+        agencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineAgency'
         eid:
           type: string
           description: External ID (defined by the provider)
@@ -613,6 +617,17 @@ components:
           type: string
           description: URL of a web page about the particular route.
           example: 'https://emtmalaga.es/linea/65'
+    LineAgency:
+      type: object
+      properties:
+        agency:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
+        role:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency role ID
     Station:
       type: object
       properties:
