@@ -163,6 +163,29 @@ paths:
                           $ref: '#/components/schemas/Network'
         400:
           $ref: '#/components/responses/400BadRequest'
+    delete:
+      tags:
+        - Networks
+      summary: Deletes a single network
+      description: >
+        Removes a network from de database <br>
+        DANGER! This method does not removes all the network's associated elements
+      parameters:
+        - in: path
+          name: id
+          description: Network ID
+          required: true
+          schema:
+            $ref: '#/components/schemas/objectId'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ApiResponse'
+        400:
+          $ref: '#/components/responses/400BadRequest'
   /networks/find:
     get:
       tags:
