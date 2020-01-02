@@ -589,6 +589,10 @@ components:
             Do not simply duplicate the name of the route.
           example: >
             "A" trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional "A" trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway).
+        type:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Route Type ID
         startDate:
           $ref: '#/components/schemas/startDate'
         endDate:
@@ -609,10 +613,6 @@ components:
           type: string
           description: URL of a web page about the particular route.
           example: 'https://emtmalaga.es/linea/65'
-        type:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Route Type ID
     Station:
       type: object
       properties:
