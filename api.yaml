@@ -169,6 +169,12 @@ paths:
                         type: array
                         items:
                           $ref: '#/components/schemas/Network'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
   /networks/find:
     get:
       tags:
