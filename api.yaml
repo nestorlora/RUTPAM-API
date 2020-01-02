@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_10
+  version: 0.2-dev_11
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -610,12 +610,9 @@ components:
           description: URL of a web page about the particular route.
           example: 'https://emtmalaga.es/linea/65'
         type:
-          type: integer
-          format: int32
-          description: >
-            Indicates the type of transportation used on a route [Google
-            Dev](https://developers.google.com/transit/gtfs/reference/extended-route-types?hl=es)
-          example: 7200
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Route Type ID
     Station:
       type: object
       properties:
@@ -970,6 +967,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/objectId'
           - description: Route type ID
+        gtfs_code:
+          type: integer
+          description: >
+            Standard GTFS route_type code <br>
+            [Legend](https://developers.google.com/transit/gtfs/reference?#routestxt)
+        gtfs_ext_code:
+          type: integer
+          description: >
+            Google Transit's extended GTFS route_type code <br>
+            [Legend](https://developers.google.com/transit/gtfs/reference/extended-route-types?)
         description:
           type: string
           description: Type name
@@ -978,9 +985,6 @@ components:
           type: string
           description: Type explanation or example
           example: 'TGV (FR), ICE (DE), Eurostar (GB)'
-      description: >-
-        Legend in [Google
-        Dev](https://developers.google.com/transit/gtfs/reference/extended-route-types?hl=es)
     Transfer:
       type: object
       properties:
