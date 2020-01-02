@@ -102,11 +102,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/Network'
         400:
-          description: Invalid input
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiResponse'
+          $ref: '#/components/responses/400BadRequest'
     patch:
       tags:
         - Networks
@@ -137,11 +133,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/Network'
         400:
-          description: Invalid input
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiResponse'
+          $ref: '#/components/responses/400BadRequest'
   /networks/{id}:
     get:
       tags:
@@ -170,11 +162,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/Network'
         400:
-          description: Invalid input
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiResponse'
+          $ref: '#/components/responses/400BadRequest'
   /networks/find:
     get:
       tags:
@@ -203,11 +191,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/Network'
         400:
-          description: Invalid input
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiResponse'
+          $ref: '#/components/responses/400BadRequest'
   /stations:
     get:
       tags:
@@ -1135,6 +1119,12 @@ components:
       in: header
       name: opKey
   responses:
+    400BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponse'
     401Unauthorized:
       description: Unauthorized (insufficient permissions or token key is expired)
       headers:
