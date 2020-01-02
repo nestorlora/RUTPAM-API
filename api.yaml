@@ -617,6 +617,31 @@ components:
           type: string
           description: URL of a web page about the particular route.
           example: 'https://emtmalaga.es/linea/65'
+    RouteType:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Route type ID
+        gtfs_code:
+          type: integer
+          description: >
+            Standard GTFS route_type code <br>
+            [Legend](https://developers.google.com/transit/gtfs/reference?#routestxt)
+        gtfs_ext_code:
+          type: integer
+          description: >
+            Google Transit's extended GTFS route_type code <br>
+            [Legend](https://developers.google.com/transit/gtfs/reference/extended-route-types?)
+        description:
+          type: string
+          description: Type name
+          example: High Speed Rail Service
+        example:
+          type: string
+          description: Type explanation or example
+          example: 'TGV (FR), ICE (DE), Eurostar (GB)'
     LineAgency:
       type: object
       properties:
@@ -975,31 +1000,6 @@ components:
           type: string
           description: Type description
           example: The vehicles wait for the tranfer passengers to depart
-    RouteType:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Route type ID
-        gtfs_code:
-          type: integer
-          description: >
-            Standard GTFS route_type code <br>
-            [Legend](https://developers.google.com/transit/gtfs/reference?#routestxt)
-        gtfs_ext_code:
-          type: integer
-          description: >
-            Google Transit's extended GTFS route_type code <br>
-            [Legend](https://developers.google.com/transit/gtfs/reference/extended-route-types?)
-        description:
-          type: string
-          description: Type name
-          example: High Speed Rail Service
-        example:
-          type: string
-          description: Type explanation or example
-          example: 'TGV (FR), ICE (DE), Eurostar (GB)'
     Transfer:
       type: object
       properties:
