@@ -557,6 +557,65 @@ components:
           type: string
           description: Extended or full-version name of the networkd
           example: "Consorcio de Transportes Metropolitanos del Área de Málaga"
+    Route:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Route ID
+        network:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
+        eid:
+          type: string
+          description: External ID (defined by the provider)
+          example: 41
+        shortName:
+          type: string
+          description: >
+            Short name of a route. This will often be a short, abstract identifier like "32", "100X", or "Green" that riders use to identify a route, but which doesn't give any indication of what places the route serves.
+          example: N1
+        longName:
+          type: string
+          description: >
+            Full name of a route. This name is generally more descriptive than the shortName and often includes the route's destination or stop.
+          example: Puerta Blanca - Alameda Principal - El Palo
+        description:
+          type: string
+          description: >
+            Description of a route that provides useful, quality information.
+            Do not simply duplicate the name of the route.
+          example: >
+            "A" trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional "A" trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway).
+        observations:
+          type: string
+          description: Aditional comments, informal data.
+          example: Traslado de paradas por obras en Alameda Ppal
+        startDate:
+          $ref: '#/components/schemas/startDate'
+        endDate:
+          $ref: '#/components/schemas/endDate'
+        color:
+          type: string
+          description: Route color designation that matches public facing material
+          example: 00FF00
+        textColor:
+          type: string
+          description: Legible color to use for text drawn against a background of the previous color
+          example: FFFFFF
+        url:
+          type: string
+          description: URL of a web page about the particular route.
+          example: 'https://emtmalaga.es/linea/65'
+        type:
+          type: integer
+          format: int32
+          description: >
+            Indicates the type of transportation used on a route [Google
+            Dev](https://developers.google.com/transit/gtfs/reference/extended-route-types?hl=es)
+          example: 7200
     Station:
       type: object
       properties:
@@ -632,65 +691,6 @@ components:
           $ref: '#/components/schemas/startDate'
         endDate:
           $ref: '#/components/schemas/endDate'
-    Route:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Route ID
-        network:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Network ID
-        eid:
-          type: string
-          description: External ID (defined by the provider)
-          example: 41
-        shortName:
-          type: string
-          description: >
-            Short name of a route. This will often be a short, abstract identifier like "32", "100X", or "Green" that riders use to identify a route, but which doesn't give any indication of what places the route serves.
-          example: N1
-        longName:
-          type: string
-          description: >
-            Full name of a route. This name is generally more descriptive than the shortName and often includes the route's destination or stop.
-          example: Puerta Blanca - Alameda Principal - El Palo
-        description:
-          type: string
-          description: >
-            Description of a route that provides useful, quality information.
-            Do not simply duplicate the name of the route.
-          example: >
-            "A" trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional "A" trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway).
-        observations:
-          type: string
-          description: Aditional comments, informal data.
-          example: Traslado de paradas por obras en Alameda Ppal
-        startDate:
-          $ref: '#/components/schemas/startDate'
-        endDate:
-          $ref: '#/components/schemas/endDate'
-        color:
-          type: string
-          description: Route color designation that matches public facing material
-          example: 00FF00
-        textColor:
-          type: string
-          description: Legible color to use for text drawn against a background of the previous color
-          example: FFFFFF
-        url:
-          type: string
-          description: URL of a web page about the particular route.
-          example: 'https://emtmalaga.es/linea/65'
-        type:
-          type: integer
-          format: int32
-          description: >
-            Indicates the type of transportation used on a route [Google
-            Dev](https://developers.google.com/transit/gtfs/reference/extended-route-types?hl=es)
-          example: 7200
     Town:
       type: object
       properties:
