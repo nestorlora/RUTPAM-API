@@ -568,10 +568,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/objectId'
           - description: Network ID
-        eid:
-          type: string
-          description: External ID (defined by the provider)
-          example: 41
         shortName:
           type: string
           description: >
@@ -582,6 +578,10 @@ components:
           description: >
             Full name of a route. This name is generally more descriptive than the shortName and often includes the route's destination or stop.
           example: Puerta Blanca - Alameda Principal - El Palo
+        eid:
+          type: string
+          description: External ID (defined by the provider)
+          example: 41
         description:
           type: string
           description: >
