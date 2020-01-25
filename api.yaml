@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_17
+  version: 0.2-dev_18
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -661,6 +661,51 @@ components:
           allOf:
           - $ref: '#/components/schemas/objectId'
           - description: Agency role ID
+    Agency:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
+        name:
+          type: string
+          description: Agency name
+          example: 'Avanza Movilidad Urbana, S.L.U'
+        info:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgencyInfo'
+    AgencyInfo:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: AgencyInfoType ID
+        value:
+          type: string
+          description: Actual piece of information
+          example: billing@transport.net
+        description:
+          type: string
+          description: Optional description of value
+          example: Billing
+    AgencyInfoType:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Info type ID
+        name:
+          type: string
+          description: Type name
+          example: URL
+        description:
+          type: string
+          description: Type description
+          example: URI in RFC-3986 format
     Itinerary:
       type: object
       properties:
@@ -701,29 +746,6 @@ components:
           example: Paseo del Parque 21
         location:
           $ref: '#/components/schemas/LatLong'
-    AgencyInfo:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Relation ID
-        agency:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Agency ID
-        type:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Info type ID
-        information:
-          type: string
-          description: Actual piece of information
-          example: reservas@malaga.avanzabus.es
-        description:
-          type: string
-          description: Complement to the previous information
-          example: Reservas
     Town:
       type: object
       properties:
@@ -750,17 +772,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/objectId'
           - description: Parent Town ID
-    Agency:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Agency ID
-        name:
-          type: string
-          description: Agency name
-          example: 'Avanza Movilidad Urbana, S.L.U'
     RouteAgencies:
       type: object
       properties:
@@ -929,17 +940,6 @@ components:
           type: string
           description: Description
           example: 'Timetables, detours, reinforcements, etc...'
-    InfoType:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Info type ID
-        type:
-          type: string
-          description: Type name
-          example: URL
     SubrouteType:
       type: object
       properties:
