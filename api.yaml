@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_16
+  version: 0.2-dev_17
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -611,11 +611,15 @@ components:
           example: Traslado de paradas por obras en Alameda Ppal
         color:
           type: string
-          description: Route color designation that matches public facing material
+          description: HTML-format route color designation that matches public facing material
+          minLength: 6
+          maxLength: 6
           example: 00FF00
         textColor:
           type: string
-          description: Legible color to use for text drawn against a background of the previous color
+          description: HTML-format legible color to use for text drawn against a background of the previous color
+          minLength: 6
+          maxLength: 6
           example: FFFFFF
         url:
           type: string
