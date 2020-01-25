@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_14
+  version: 0.2-dev_15
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -1092,18 +1092,9 @@ components:
           type: string
           example: "OK"
   securitySchemes:
-    User:
-      type: apiKey
-      in: header
-      name: userKey
-    Agent:
-      type: apiKey
-      in: header
-      name: agentKey
-    Admin:
-      type: apiKey
-      in: header
-      name: opKey
+    bearerAuth:
+      type: http
+      scheme: bearer
   responses:
     # COMMON SUCCESS
     200Generic:
@@ -1169,9 +1160,7 @@ components:
           schema:
             $ref: '#/components/schemas/ApiResponse'
 security:
-  - User: []
-  - Agent: []
-  - Admin: []
+  - bearerAuth: []
 tags:
   - name: Server
     description: Server status and authentication
