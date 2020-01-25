@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: RUTPAM API
-  version: 0.2-dev_15
+  version: 0.2-dev_16
   description: >
     This API defines the methods and objects that provide and receive data from/to the server.
     The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
@@ -1124,7 +1124,7 @@ components:
           schema:
             $ref: '#/components/schemas/ApiResponse'
     401Unauthorized:
-      description: Unauthorized (insufficient permissions or token key is expired)
+      description: Access token is missing or is invalid
       headers:
         WWW-Authenticate:
           schema:
@@ -1136,7 +1136,7 @@ components:
           schema:
             $ref: '#/components/schemas/ApiResponse'
     403Forbidden:
-      description: Forbidden access (token key is not provided)
+      description: Forbidden operation for authenticated user
       content:
         application/json:
           schema:
