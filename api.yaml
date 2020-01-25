@@ -328,7 +328,7 @@ paths:
                       routes:
                         type: array
                         items:
-                          $ref: '#/components/schemas/RouteItinerary'
+                          $ref: '#/components/schemas/Itinerary'
   /subroutes/findByRoute:
     get:
       tags:
@@ -356,7 +356,7 @@ paths:
                       routes:
                         type: array
                         items:
-                          $ref: '#/components/schemas/RouteItinerary'
+                          $ref: '#/components/schemas/Itinerary'
   /agencies:
     get:
       tags:
@@ -589,7 +589,7 @@ components:
         itineraries:
           type: array
           items:
-            $ref: '#/components/schemas/RouteItinerary'
+            $ref: '#/components/schemas/Itinerary'
         description:
           type: string
           description: >
@@ -661,7 +661,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/objectId'
           - description: Agency role ID
-    RouteItinerary:
+    Itinerary:
       type: object
       properties:
         eid:
