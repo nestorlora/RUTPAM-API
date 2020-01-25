@@ -650,6 +650,17 @@ components:
           type: string
           description: Type explanation or example
           example: 'TGV (FR), ICE (DE), Eurostar (GB)'
+    LineAgency:
+      type: object
+      properties:
+        agency:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency ID
+        role:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Agency role ID
     RouteItinerary:
       type: object
       properties:
@@ -669,17 +680,6 @@ components:
           type: string
           description: Subroute description
           example: Ida. Itinerario 1
-    LineAgency:
-      type: object
-      properties:
-        agency:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Agency ID
-        role:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Agency role ID
     Station:
       type: object
       properties:
