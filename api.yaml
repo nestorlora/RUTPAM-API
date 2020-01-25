@@ -653,10 +653,108 @@ components:
           type: string
           description: Headsign indication text
           example: El Palo
+        stops:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItineraryStop'
         description:
           type: string
           description: Subroute description
           example: Ida. Itinerario 1
+    ItineraryStop:
+      type: object
+      properties:
+        stop:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Stop ID
+        sequence:
+          type: integer
+          format: int32
+          description: Sequence order of the stop in the subroute
+          example: 14
+        pickup:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pickup or Drop off type ID
+        dropoff:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pickup or Drop off type ID
+    Stop:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Stop ID
+        eid:
+          type: string
+          description: External ID (defined by the provider)
+          example: 41
+        name:
+          type: string
+          description: Stop name. Usually describes the location around the stop.
+          example: Alameda Principal - Sur
+        townArea:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Town area ID
+        station:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Parent station ID (if exists)
+        platform:
+          type: string
+          description: >
+            Platform identifier for a platform stop (a stop belonging to a station). 
+            This should be just the platform identifier (eg. "G" or "3"). Words like “platform” 
+            or "track" should not be included.
+          example: 4B
+        network:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Network ID
+        zone:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Zone ID
+        address:
+          type: string
+          description: Station address (if it has one)
+          example: Paseo del Parque 21
+        location:
+          $ref: '#/components/schemas/LatLong'
+        startDate:
+          $ref: '#/components/schemas/startDate'
+        endDate:
+          $ref: '#/components/schemas/endDate'
+    HaltType:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Pickup or Drop off type ID
+        name:
+          type: string
+          description: Pickup or Drop off method
+          example: Sheduled
+        gtfs_code:
+          type: string
+          description: GTFS code equivalent to this type
+        description:
+          type: string
+          description: Method explanation or example
+          example: The vehicle performs a regularly sheduled stop
+        pickup:
+          type: boolean
+          description: ¿Is this type valid for pick-ups?
+          example: true
+        dropoff:
+          type: boolean
+          description: ¿Is this type valid for drop-offs?
+          example: true
     Station:
       type: object
       properties:
@@ -727,82 +825,6 @@ components:
           $ref: '#/components/schemas/startDate'
         endDate:
           $ref: '#/components/schemas/endDate'
-    Stop:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Stop ID
-        eid:
-          type: string
-          description: External ID (defined by the provider)
-          example: 41
-        name:
-          type: string
-          description: Stop name. Usually describes the location around the stop.
-          example: Alameda Principal - Sur
-        townArea:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Town area ID
-        station:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Parent station ID (if exists)
-        platform:
-          type: string
-          description: >
-            Platform identifier for a platform stop (a stop belonging to a station). 
-            This should be just the platform identifier (eg. "G" or "3"). Words like “platform” 
-            or "track" should not be included.
-          example: 4B
-        network:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Network ID
-        zone:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Zone ID
-        address:
-          type: string
-          description: Station address (if it has one)
-          example: Paseo del Parque 21
-        location:
-          $ref: '#/components/schemas/LatLong'
-        startDate:
-          $ref: '#/components/schemas/startDate'
-        endDate:
-          $ref: '#/components/schemas/endDate'
-    SubrouteStop:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Relation ID
-        subroute:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Subroute ID
-        stop:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Stop ID
-        pickupType:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Pickup or Drop off type ID
-        dropoffType:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Pickup or Drop off type ID
-        sequence:
-          type: integer
-          format: int32
-          description: Sequence order of the stop in the subroute
-          example: 14
     Point:
       type: object
       properties:
@@ -898,21 +920,6 @@ components:
           type: string
           description: Type name
           example: Kiosk
-    PickupDropoffType:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Pickup or Drop off type ID
-        type:
-          type: string
-          description: Pickup or Drop off method
-          example: Sheduled
-        description:
-          type: string
-          description: Method explanation or example
-          example: The vehicle performs a regularly sheduled stop
     TransferType:
       type: object
       properties:
