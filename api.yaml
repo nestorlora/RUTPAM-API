@@ -487,7 +487,7 @@ components:
           example: "CTMAM"
         longName:
           type: string
-          description: Extended or full-version name of the networkd
+          description: Extended or full-version name of the network
           example: "Consorcio de Transportes Metropolitanos del Área de Málaga"
     Route:
       type: object
