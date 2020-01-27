@@ -1042,6 +1042,9 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiResponse'
+          example:
+            code: 200
+            status: "OK"
     200Networks:
       description: Successful operation
       content:
@@ -1062,6 +1065,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiResponse'
+          examples:
+            Generic error:
+              value:
+                code: 4000
+                description: Unexpected input error
+            No parameters supplied:
+              value:
+                code: 4001
+                description: You MUST provide at least one of [%] parameters.
+            Mandatory parameters not provided:
+              value:
+                code: 4002
+                description: Parameters [%] are required to proceed.
     401Unauthorized:
       description: Access token is missing or is invalid
       headers:
