@@ -759,13 +759,13 @@ components:
       type: object
       properties:
         point:
-          anyOf:
-            - allOf:
-              - $ref: '#/components/schemas/LatLong'
-              - description: Point location
-            - allOf:
-              - $ref: '#/components/schemas/objectId'
-              - description: Point ID
+          allOf:
+          - $ref: '#/components/schemas/objectId'
+          - description: Point ID
+        location:
+          allOf:
+          - $ref: '#/components/schemas/LatLong'
+          - description: Point Location
         sequence:
           type: integer
           format: int32
