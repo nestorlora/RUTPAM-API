@@ -755,6 +755,22 @@ components:
           type: boolean
           description: ¿Is this type valid for drop-offs?
           example: true
+    PathPoint:
+      type: object
+      properties:
+        point:
+          anyOf:
+            - allOf:
+              - $ref: '#/components/schemas/LatLong'
+              - description: Point location
+            - allOf:
+              - $ref: '#/components/schemas/objectId'
+              - description: Point ID
+        sequence:
+          type: integer
+          format: int32
+          description: Sequence order of the point in the path
+          example: 14
     Station:
       type: object
       properties:
@@ -834,26 +850,6 @@ components:
           - description: Point ID
         location:
           $ref: '#/components/schemas/LatLong'
-    PathPoint:
-      type: object
-      properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Relation ID
-        path:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Path ID
-        point:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Point ID
-        sequence:
-          type: integer
-          format: int32
-          description: Sequence order of the point in the path
-          example: 14
     POS:
       type: object
       properties:
