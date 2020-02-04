@@ -890,6 +890,10 @@ components:
           example: Paseo del Parque 21
         location:
           $ref: '#/components/schemas/LatLong'
+        url:
+          type: string
+          description: URL of a web page about the stop.
+          example: 'http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=151'
         startDate:
           $ref: '#/components/schemas/startDate'
         endDate:
