@@ -770,6 +770,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AgencyInfo'
+    # TODO Feature: Agency Roles
+    # agency_id, services[]{line, role}
     AgencyInfo:
       type: object
       properties:
@@ -933,6 +935,8 @@ components:
           format: int32
           description: Sequence order of the point in the path
           example: 14
+    # TODO Feature: Stop Services
+    # stop_id, services[]{line, itinerary}
     Station:
       type: object
       properties:
