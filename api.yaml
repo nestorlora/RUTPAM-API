@@ -6,6 +6,7 @@ info:
     This API defines the methods and objects to provide and receive data from/to the server.
     The design extends GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
     
+
     Currently supported standards:
       - GTFS
       - GTFS Google Transit's Extensions
