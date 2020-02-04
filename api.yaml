@@ -560,28 +560,181 @@ components:
     RouteType:
       type: object
       properties:
-        id:
-          allOf:
-          - $ref: '#/components/schemas/objectId'
-          - description: Route type ID
         gtfs_code:
           type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
           description: >
-            Standard GTFS route_type code <br>
-            [Legend](https://developers.google.com/transit/gtfs/reference?#routestxt)
+            Standard GTFS route_type code:
+              * `0` - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
+              * `1` - Subway, Metro. Any underground rail system within a metropolitan area.
+              * `2` - Rail. Used for intercity or long-distance travel.
+              * `3` - Bus. Used for short- and long-distance bus routes.
+              * `4` - Ferry. Used for short- and long-distance boat service.
+              * `5` - Cable car. Used for street-level cable cars where the cable runs beneath the car.
+              * `6` - Gondola, Suspended cable car. Typically used for aerial cable cars where the car is suspended from the cable.
+              * `7` - Funicular. Any rail system designed for steep inclines.
         gtfs_ext_code:
           type: integer
+          enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 111
+          - 112
+          - 113
+          - 114
+          - 115
+          - 116
+          - 117
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 209
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 700
+          - 701
+          - 702
+          - 703
+          - 704
+          - 705
+          - 706
+          - 707
+          - 708
+          - 709
+          - 710
+          - 711
+          - 712
+          - 713
+          - 714
+          - 715
+          - 716
+          - 717
+          - 800
+          - 900
+          - 901
+          - 902
+          - 903
+          - 904
+          - 905
+          - 906
+          - 907
+          - 1000
+          - 1100
+          #- 1200
+          - 1300
+          - 1400
+          - 1500
+          #- 1501
+          - 1502
+          - 1503
+          - 1504
+          - 1505
+          - 1506
+          - 1507
+          - 1700
           description: >
             Google Transit's extended GTFS route_type code <br>
-            [Legend](https://developers.google.com/transit/gtfs/reference/extended-route-types?)
-        description:
-          type: string
-          description: Type name
-          example: High Speed Rail Service
-        example:
-          type: string
-          description: Type explanation or example
-          example: 'TGV (FR), ICE (DE), Eurostar (GB)'
+            [Legend](https://developers.google.com/transit/gtfs/reference/extended-route-types?) <br>
+              * `100` - **Railway Service**
+              * `101` - High Speed Rail Service
+              * `102` - Long Distance Trains
+              * `103` - Inter Regional Rail Service
+              * `104` - Car Transport Rail Service
+              * `105` - Sleeper Rail Service
+              * `106` - Regional Rail Service
+              * `107` - Tourist Railway Service
+              * `108` - Rail Shuttle (within complex)
+              * `109` - Suburban Railway
+              * `110` - Replacement Rail Service
+              * `111` - Special Rail Service
+              * `112` - Lorry Transport Rail Service
+              * `113` - All Rail Services
+              * `114` - Cross-Country Rail Service
+              * `115` - Vehicle Transport Rail Service
+              * `116` - Rack and Pinion Railway
+              * `117` - Additional Rail Service
+              * `200` - **Coach Service**
+              * `201` - International Coach Service
+              * `202` - National Coach Service
+              * `203` - Shuttle Coach Service
+              * `204` - Regional Coach Service
+              * `205` - Special Coach Service
+              * `206` - Sightseeing Coach Service
+              * `207` - Tourist Coach Service
+              * `208` - Commuter Coach Service
+              * `209` - All Coach Services
+              * `400` - **Urban Railway Service**
+              * `401` - Metro service
+              * `402` - Underground Service
+              * `403` - Urban Railway Service
+              * `404` - All Urban Railway Services
+              * `405` - Monorail
+              * `700` - **Bus Service**
+              * `701` - Regional Bus Service
+              * `702` - Express Bus Service
+              * `703` - Stopping Bus Service
+              * `704` - Local Bus Service
+              * `705` - Night Bus Service
+              * `706` - Post Bus Service
+              * `707` - Special Needs Bus
+              * `708` - Mobility Bus Service
+              * `709` - Mobility Bus for Registered Disabled
+              * `710` - Sightseeing Bus
+              * `711` - Shuttle Bus
+              * `712` - School Bus
+              * `713` - School and Public Service Bus
+              * `714` - Rail Replacement Bus Service
+              * `715` - Demand and Response Bus Service
+              * `716` - All Bus Services
+              * `717` - Share Taxi Service
+              * `800` - **Trolleybus Service**
+              * `900` - **Tram Service**
+              * `901` - City Tram Service
+              * `902` - Local Tram Service
+              * `903` - Regional Tram Service
+              * `904` - Sightseeing Tram Service
+              * `905` - Shuttle Tram
+              * `906` - All Tram Services
+              * `907` - Cable Tram
+              * `1000` - **Water Transport Service**
+              * `1100` - **Air Service**
+              * `1300` - **Aerial Lift Service**
+              * `1400` - **Funicular Service**
+              * `1500` - **Taxi Service**
+              * `1502` - Water Taxi Service
+              * `1503` - Rail Taxi Service
+              * `1504` - Bike Taxi Service
+              * `1505` - Licensed Taxi Service
+              * `1506` - Private Hire Service Vehicle
+              * `1507` - All Taxi Services
+              * `1700` - **Miscellaneous Service**
     LineAgency:
       type: object
       properties:
@@ -841,6 +994,7 @@ components:
           $ref: '#/components/schemas/startDate'
         endDate:
           $ref: '#/components/schemas/endDate'
+    
     Point:
       type: object
       properties:
@@ -850,6 +1004,7 @@ components:
           - description: Point ID
         location:
           $ref: '#/components/schemas/LatLong'
+
     POS:
       type: object
       properties:
@@ -916,6 +1071,7 @@ components:
           type: string
           description: Type name
           example: Kiosk
+    
     TransferType:
       type: object
       properties:
