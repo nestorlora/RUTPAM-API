@@ -3,8 +3,17 @@ info:
   title: RUTPAM API
   version: 0.3-dev
   description: >
-    This API defines the methods and objects that provide and receive data from/to the server.
-    The design extends the GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
+    This API defines the methods and objects to provide and receive data from/to the server.
+    The design extends GTFS specification to a more abstract and complete knowledge base about the stored public transit networks.
+    
+    Currently supported standards:
+      - GTFS
+      - GTFS Google Transit's Extensions
+    
+    Planned support standards:
+      * GTFS-RT (Real Time)
+      * GTFS-Flex
+      * GBFS
   contact:
     name: Néstor Lora
     email: nestorlora@geeklab.es
